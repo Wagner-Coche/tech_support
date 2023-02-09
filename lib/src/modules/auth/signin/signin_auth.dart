@@ -116,7 +116,7 @@ class _SignInAuthState extends State<SignInAuth> {
                           style: GoogleFonts.righteous(color: ColorDefault.greyColor),
                         ),
                         InkWell(
-                          onTap: () => context.go("/auth_module/signin"),
+                          onTap: () => context.go("/auth_module/signup"),
                           borderRadius: const BorderRadius.all(Radius.circular(10)),
                           splashColor: ColorDefault.greyOtherColor.withOpacity(.3),
                           child: Text(

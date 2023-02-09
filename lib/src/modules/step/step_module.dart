@@ -52,7 +52,6 @@ class _StepModuleState extends State<StepModule> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: const <Widget>[
-                RowIconsPreviewAndNextComponent(),
                 TextDescriptionComponent(),
                 TextDetailComponent(),
                 ButtonNextStepComponent(),

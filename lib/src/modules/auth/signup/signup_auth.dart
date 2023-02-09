@@ -14,7 +14,7 @@ class SignUpAuth extends StatefulWidget {
 }
 
 class _SignUpAuthState extends State<SignUpAuth> {
-  bool active = true;
+  bool active = false;
 
   @override
   Widget build(BuildContext context) {

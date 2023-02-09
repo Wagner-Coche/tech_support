@@ -1,12 +1,12 @@
-import 'package:e_support/src/modules/auth/signin/signin_auth.dart';
-import 'package:e_support/src/modules/auth/signup/signup_auth.dart';
-import 'package:e_support/src/modules/loading/loading_module.dart';
+import 'package:e_support/src/modules/home/home_module.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
-import 'package:e_support/src/modules/main/main_module.dart';
 import 'package:e_support/src/modules/auth/auth_module.dart';
 import 'package:e_support/src/modules/step/step_module.dart';
 import 'package:e_support/src/modules/splash/splash_module.dart';
+import 'package:e_support/src/modules/loading/loading_module.dart';
+import 'package:e_support/src/modules/auth/signin/signin_auth.dart';
+import 'package:e_support/src/modules/auth/signup/signup_auth.dart';
 
 class Routes {
   static GoRouter get routes => GoRouter(
@@ -77,11 +77,11 @@ class Routes {
         }
       ),
       GoRoute(
-        path: "/main_module", 
+        path: "/loading_module", 
         pageBuilder: (context, state) {
           return CustomTransitionPage(
             key: state.pageKey,
-            child: const MainModule(), 
+            child: const LoadingModule(), 
             transitionsBuilder: (context, animation, secondaryAnimation, child) => FadeTransition(
               opacity: CurveTween(curve: Curves.easeInOutCirc).animate(animation),
               child: child,
@@ -90,11 +90,11 @@ class Routes {
         }
       ),
       GoRoute(
-        path: "/loading_module", 
+        path: "/home_module", 
         pageBuilder: (context, state) {
           return CustomTransitionPage(
             key: state.pageKey,
-            child: const LoadingModule(), 
+            child: const HomeModule(), 
             transitionsBuilder: (context, animation, secondaryAnimation, child) => FadeTransition(
               opacity: CurveTween(curve: Curves.easeInOutCirc).animate(animation),
               child: child,
