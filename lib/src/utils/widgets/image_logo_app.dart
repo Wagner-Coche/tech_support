@@ -32,7 +32,7 @@ class ImageLogoApp extends StatelessWidget {
             ),
             child: Text(
               "SUPPORT",
-              style: GoogleFonts.aBeeZee(
+              style: GoogleFonts.righteous(
                 fontSize: fontSize,
                 color: ColorDefault.whiteColor,
                 fontWeight: FontWeight.bold

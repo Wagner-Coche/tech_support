@@ -34,7 +34,7 @@ class RowIconsPreviewAndNextComponent extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {}, 
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: ColorDefault.greyColor,
+                  backgroundColor: ColorDefault.greyOtherColor,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(30))
                   )
@@ -48,7 +48,7 @@ class RowIconsPreviewAndNextComponent extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: ColorDefault.greyColor,
+                  backgroundColor: ColorDefault.greyOtherColor,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(30))
                   )

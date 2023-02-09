@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../utils/color_default.dart';
 
@@ -11,7 +12,7 @@ class ButtonNextStepComponent extends StatelessWidget {
       height: MediaQuery.of(context).size.height * .07,
       width: MediaQuery.of(context).size.width * .17,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () => context.go("/auth_module"),
         style: ElevatedButton.styleFrom(
           backgroundColor: ColorDefault.primaryColor,
           shape: const RoundedRectangleBorder(

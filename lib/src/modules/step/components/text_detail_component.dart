@@ -11,12 +11,11 @@ class TextDetailComponent extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * .02),
       child: Text(
-        "e-Support, is a technological solution that helps or supports the other technical problems",
+        "e-Support is a technological solution that helps or supports the other technical problems",
         textAlign: TextAlign.center,
-        style: GoogleFonts.aBeeZee(
-          fontSize: 18,
-          color: ColorDefault.greyColor,
-          fontWeight: FontWeight.bold,
+        style: GoogleFonts.righteous(
+          fontSize: MediaQuery.of(context).size.height * .023,
+          color: ColorDefault.greyOtherColor,
         )
       ),
     );

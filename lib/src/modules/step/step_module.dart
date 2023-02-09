@@ -26,8 +26,8 @@ class _StepModuleState extends State<StepModule> {
             children: <Widget>[
               Container(
                 padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * .05),
-                child: const ImageLogoApp(
-                  fontSize: 15,
+                child: ImageLogoApp(
+                  fontSize: MediaQuery.of(context).size.height * .02,
                   imageWidth: .1,
                   topPadding: .004,
                 ),

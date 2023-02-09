@@ -12,10 +12,9 @@ class TextDescriptionComponent extends StatelessWidget {
       child: Text(
         "Receive technical support, fast and simple",
         textAlign: TextAlign.center,
-        style: GoogleFonts.aBeeZee(
-          fontSize: 25,
+        style: GoogleFonts.righteous(
+          fontSize: MediaQuery.of(context).size.height * .032,
           color: ColorDefault.primaryColor,
-          fontWeight: FontWeight.bold,
         )
       ),
     );

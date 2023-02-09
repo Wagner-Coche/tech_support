@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:e_support/src/modules/step/step_module.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../utils/color_default.dart';
 import '../../utils/widgets/image_logo_app.dart';
@@ -15,18 +15,16 @@ class _SplashModuleState extends State<SplashModule> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 6)).then((value) {
-      Navigator.of(context).push(MaterialPageRoute(builder: (_) => const StepModule()));
-    });
+    Future.delayed(const Duration(seconds: 6), () => context.go("/step_module"));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorDefault.primaryColor,
-      body: const Center(
+      body: Center(
         child: ImageLogoApp(
-          fontSize: 26,
+          fontSize: MediaQuery.of(context).size.height * .032,
           imageWidth: .18,
           topPadding: .008,
         )
