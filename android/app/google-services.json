@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "734425711866",
+    "project_id": "e-support-ec55b",
+    "storage_bucket": "e-support-ec55b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:734425711866:android:4ecea1ecf1d2a489aff543",
+        "android_client_info": {
+          "package_name": "com.example.e_support"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "734425711866-vo8j0026t7iiulacef60l628ud3s0419.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdAPlAKdeZeWAb5TtGIq2EHPn3Ch-pX68"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "734425711866-vo8j0026t7iiulacef60l628ud3s0419.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

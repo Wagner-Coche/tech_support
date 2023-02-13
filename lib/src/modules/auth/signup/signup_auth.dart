@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:e_support/src/utils/color_default.dart';
+import 'package:e_support/src/utils/widgets/textfield_widget.dart';
 
+import 'controllers/signup_controller.dart';
 import '../components/button_component.dart';
-import '../components/textfield_component.dart';
+import '../../../validation/textfields_validation.dart';
 
 class SignUpAuth extends StatefulWidget {
   const SignUpAuth({super.key});
@@ -13,8 +15,19 @@ class SignUpAuth extends StatefulWidget {
   State<SignUpAuth> createState() => _SignUpAuthState();
 }
 
-class _SignUpAuthState extends State<SignUpAuth> {
+class _SignUpAuthState extends State<SignUpAuth> with TextFieldsValidation {
   bool active = false;
+  final formKey = GlobalKey<FormState>();
+  final controller = SignUpController();
+
+  @override
+  void initState() {
+    super.initState();
+    controller.showHide = false;
+    controller.fullNameController = TextEditingController();
+    controller.emailController = TextEditingController();
+    controller.passwordController = TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,145 +63,159 @@ class _SignUpAuthState extends State<SignUpAuth> {
                 right: MediaQuery.of(context).size.width * .07,
                 left: MediaQuery.of(context).size.width * .07
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * .03),
-                    child: Text(
-                      "Sign Up",
-                      style: GoogleFonts.righteous(
-                        fontSize: MediaQuery.of(context).size.height * .03,
-                        color: ColorDefault.primaryColor,
-                        fontWeight: FontWeight.w500
-                      ),
-                    ),
-                  ),
-                  const TextFieldComponent(
-                    keyBoardType: TextInputType.name,
-                    obscureText: false,
-                    title: "Full Name", 
-                  ),
-                  SizedBox(height: MediaQuery.of(context).size.height * .015),
-                  TextFieldComponent(
-                    keyBoardType: TextInputType.emailAddress,
-                    obscureText: false,
-                    title: "Email", 
-                    suffixIcon: Icon(Icons.email, color: ColorDefault.greyColor),
-                  ),
-                  SizedBox(height: MediaQuery.of(context).size.height * .015),
-                  TextFieldComponent(
-                    keyBoardType: TextInputType.name,
-                    obscureText: true,
-                    title: "Password", 
-                    suffixIcon: Icon(Icons.key, color: ColorDefault.greyColor),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * .01),
-                    child: Row(
-                      children: <Widget>[
-                        Checkbox(
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(5))
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * .03),
+                        child: Text(
+                          "Sign Up",
+                          style: GoogleFonts.righteous(
+                            fontSize: MediaQuery.of(context).size.height * .03,
+                            color: ColorDefault.primaryColor,
+                            fontWeight: FontWeight.w500
                           ),
-                          activeColor: ColorDefault.primaryColor,
-                          checkColor: ColorDefault.whiteColor,
-                          value: active, 
-                          onChanged: (value) {
-                            setState(() {
-                              active = value!;
-                            });
-                          }
                         ),
-                        Expanded(
-                          child: Row(
-                            children: <Widget>[
-                              Text(
-                                "I agree to the ",
-                                style: GoogleFonts.righteous(
-                                  fontSize: MediaQuery.of(context).size.height * .018,
-                                  color: ColorDefault.greyOtherColor
-                                ),
+                      ),
+                      TextFieldWidget(
+                        validator: fullNameValidator,
+                        controller: controller.fullNameController,
+                        keyBoardType: TextInputType.name,
+                        obscureText: false,
+                        title: "Full Name", 
+                      ),
+                      SizedBox(height: MediaQuery.of(context).size.height * .015),
+                      TextFieldWidget(
+                        validator: emailValidator,
+                        controller: controller.emailController,
+                        keyBoardType: TextInputType.emailAddress,
+                        obscureText: false,
+                        title: "Email", 
+                        suffixIcon: Icon(Icons.email, color: ColorDefault.greyColor),
+                      ),
+                      SizedBox(height: MediaQuery.of(context).size.height * .015),
+                      TextFieldWidget(
+                        validator: passwordValidator,
+                        controller: controller.passwordController,
+                        keyBoardType: TextInputType.name,
+                        obscureText: true,
+                        title: "Password", 
+                        suffixIcon: Icon(Icons.key, color: ColorDefault.greyColor),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * .01),
+                        child: Row(
+                          children: <Widget>[
+                            Checkbox(
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(5))
                               ),
-                              Text(
-                                "Terms ",
-                                style: GoogleFonts.righteous(
-                                  fontSize: MediaQuery.of(context).size.height * .018,
-                                  color: ColorDefault.primaryColor
-                                ),
+                              activeColor: ColorDefault.primaryColor,
+                              checkColor: ColorDefault.whiteColor,
+                              value: active, 
+                              onChanged: (value) {
+                                setState(() {
+                                  active = value!;
+                                });
+                              }
+                            ),
+                            Expanded(
+                              child: Row(
+                                children: <Widget>[
+                                  Text(
+                                    "I agree to the ",
+                                    style: GoogleFonts.righteous(
+                                      fontSize: MediaQuery.of(context).size.height * .018,
+                                      color: ColorDefault.greyOtherColor
+                                    ),
+                                  ),
+                                  Text(
+                                    "Terms ",
+                                    style: GoogleFonts.righteous(
+                                      fontSize: MediaQuery.of(context).size.height * .018,
+                                      color: ColorDefault.primaryColor
+                                    ),
+                                  ),
+                                  Text(
+                                    "and ",
+                                    style: GoogleFonts.righteous(
+                                      fontSize: MediaQuery.of(context).size.height * .018,
+                                      color: ColorDefault.greyOtherColor
+                                    ),
+                                  ),
+                                  Text(
+                                    "Conditions",
+                                    style: GoogleFonts.righteous(
+                                      fontSize: MediaQuery.of(context).size.height * .018,
+                                      color: ColorDefault.primaryColor
+                                    ),
+                                  ),
+                                ],
                               ),
-                              Text(
-                                "and ",
-                                style: GoogleFonts.righteous(
-                                  fontSize: MediaQuery.of(context).size.height * .018,
-                                  color: ColorDefault.greyOtherColor
-                                ),
-                              ),
-                              Text(
-                                "Conditions",
-                                style: GoogleFonts.righteous(
-                                  fontSize: MediaQuery.of(context).size.height * .018,
-                                  color: ColorDefault.primaryColor
-                                ),
-                              ),
-                            ],
-                          ),
+                            )
+                          ],
                         )
-                      ],
-                    )
-                  ),
-                  ButtonComponent(
-                    onPressed: () => context.go("/loading_module"),
-                    border: false,
-                    text: "Create Account",
-                    colorText: ColorDefault.whiteColor,
-                    colorButton: ColorDefault.primaryColor,
-                    colorBorder: ColorDefault.primaryColor,
-                    height: MediaQuery.of(context).size.height * .07,
-                    width: MediaQuery.of(context).size.width,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * .004),
-                    child: Center(
-                      child: Text(
-                        "──────────── or ────────────",
-                        style: GoogleFonts.righteous(color: ColorDefault.greyColor),
                       ),
-                    ),
-                  ),
-                  ButtonComponent(
-                    onPressed: () => context.go("/auth_module/signin"),
-                    border: true,
-                    icon: true,
-                    text: "Sign in with Google",
-                    colorText: ColorDefault.primaryColor,
-                    colorButton: ColorDefault.whiteColor,
-                    colorBorder: ColorDefault.primaryColor,
-                    height: MediaQuery.of(context).size.height * .07,
-                    width: MediaQuery.of(context).size.width,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * .03),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Already have an account? ",
-                          style: GoogleFonts.righteous(color: ColorDefault.greyColor),
-                        ),
-                        InkWell(
-                          onTap: () => context.go("/auth_module/signin"),
-                          borderRadius: const BorderRadius.all(Radius.circular(10)),
-                          splashColor: ColorDefault.greyOtherColor.withOpacity(.3),
+                      ButtonComponent(
+                        onPressed: () {
+                          if (formKey.currentState!.validate()) return context.go("/loading_module");
+                        },
+                        border: false,
+                        text: "Create Account",
+                        colorText: ColorDefault.whiteColor,
+                        colorButton: ColorDefault.primaryColor,
+                        colorBorder: ColorDefault.primaryColor,
+                        height: MediaQuery.of(context).size.height * .07,
+                        width: MediaQuery.of(context).size.width,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * .004),
+                        child: Center(
                           child: Text(
-                            "Sign in",
-                            style: GoogleFonts.righteous(color: ColorDefault.primaryColor),
+                            "──────────── or ────────────",
+                            style: GoogleFonts.righteous(color: ColorDefault.greyColor),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                      ButtonComponent(
+                        onPressed: () => context.go("/auth_module/signin"),
+                        border: true,
+                        icon: true,
+                        text: "Sign in with Google",
+                        colorText: ColorDefault.primaryColor,
+                        colorButton: ColorDefault.whiteColor,
+                        colorBorder: ColorDefault.primaryColor,
+                        height: MediaQuery.of(context).size.height * .07,
+                        width: MediaQuery.of(context).size.width,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * .03),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Already have an account? ",
+                              style: GoogleFonts.righteous(color: ColorDefault.greyColor),
+                            ),
+                            InkWell(
+                              onTap: () => context.go("/auth_module/signin"),
+                              borderRadius: const BorderRadius.all(Radius.circular(10)),
+                              splashColor: ColorDefault.greyOtherColor.withOpacity(.3),
+                              child: Text(
+                                "Sign in",
+                                style: GoogleFonts.righteous(color: ColorDefault.primaryColor),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             )
           ),

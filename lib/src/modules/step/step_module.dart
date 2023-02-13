@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../utils/color_default.dart';
 import '../../utils/widgets/image_logo_app.dart';
 import 'components/button_next_step_component.dart';
-import 'components/row_icons_preview_and_next_component.dart';
 import 'components/text_description_component.dart';
 import 'components/text_detail_component.dart';
 
