@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:e_support/src/utils/color_default.dart';
 import 'package:e_support/src/utils/widgets/textfield_widget.dart';
 
+import '../../../models/user/user_sign_up.dart';
 import 'controllers/signup_controller.dart';
 import '../components/button_component.dart';
 import '../../../validation/textfields_validation.dart';
@@ -73,7 +74,7 @@ class _SignUpAuthState extends State<SignUpAuth> with TextFieldsValidation {
                       Padding(
                         padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * .03),
                         child: Text(
-                          "Sign Up",
+                          "Registrar",
                           style: GoogleFonts.righteous(
                             fontSize: MediaQuery.of(context).size.height * .03,
                             color: ColorDefault.primaryColor,
@@ -85,26 +86,36 @@ class _SignUpAuthState extends State<SignUpAuth> with TextFieldsValidation {
                         validator: fullNameValidator,
                         controller: controller.fullNameController,
                         keyBoardType: TextInputType.name,
-                        obscureText: false,
-                        title: "Full Name", 
+                        title: "Nome completo", 
                       ),
                       SizedBox(height: MediaQuery.of(context).size.height * .015),
                       TextFieldWidget(
                         validator: emailValidator,
                         controller: controller.emailController,
                         keyBoardType: TextInputType.emailAddress,
-                        obscureText: false,
                         title: "Email", 
                         suffixIcon: Icon(Icons.email, color: ColorDefault.greyColor),
                       ),
                       SizedBox(height: MediaQuery.of(context).size.height * .015),
                       TextFieldWidget(
+                        showHide: controller.showHide,
                         validator: passwordValidator,
                         controller: controller.passwordController,
                         keyBoardType: TextInputType.name,
-                        obscureText: true,
-                        title: "Password", 
-                        suffixIcon: Icon(Icons.key, color: ColorDefault.greyColor),
+                        title: "Senha", 
+                        suffixIcon: controller.showHide ? 
+                          GestureDetector(
+                            onTap: () => setState(() {
+                              controller.showHide = !(controller.showHide);
+                            }),
+                            child: Icon(Icons.visibility, color: ColorDefault.greyColor),
+                          ) : 
+                          GestureDetector(
+                            onTap: () => setState(() {
+                              controller.showHide = !(controller.showHide);
+                            }),
+                            child: Icon(Icons.visibility_off, color: ColorDefault.greyColor),
+                          )
                       ),
                       Container(
                         padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * .01),
@@ -162,10 +173,17 @@ class _SignUpAuthState extends State<SignUpAuth> with TextFieldsValidation {
                       ),
                       ButtonComponent(
                         onPressed: () {
-                          if (formKey.currentState!.validate()) return context.go("/loading_module");
+                          if (formKey.currentState!.validate()) {
+                            UserSignUp userSignUp = UserSignUp(
+                              fullName: controller.fullNameController.text,
+                              email: controller.emailController.text, 
+                              password: controller.emailController.text,
+                            );
+                            return context.go("/loading_register_module", extra: userSignUp);
+                          }
                         },
                         border: false,
-                        text: "Create Account",
+                        text: "Criar conta",
                         colorText: ColorDefault.whiteColor,
                         colorButton: ColorDefault.primaryColor,
                         colorBorder: ColorDefault.primaryColor,
@@ -176,16 +194,16 @@ class _SignUpAuthState extends State<SignUpAuth> with TextFieldsValidation {
                         padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * .004),
                         child: Center(
                           child: Text(
-                            "──────────── or ────────────",
+                            "──────────── ou ────────────",
                             style: GoogleFonts.righteous(color: ColorDefault.greyColor),
                           ),
                         ),
                       ),
                       ButtonComponent(
-                        onPressed: () => context.go("/auth_module/signin"),
+                        onPressed: () {},
                         border: true,
                         icon: true,
-                        text: "Sign in with Google",
+                        text: "Entrar com o Google",
                         colorText: ColorDefault.primaryColor,
                         colorButton: ColorDefault.whiteColor,
                         colorBorder: ColorDefault.primaryColor,
@@ -198,7 +216,7 @@ class _SignUpAuthState extends State<SignUpAuth> with TextFieldsValidation {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Already have an account? ",
+                              "Já tem uma conta? ",
                               style: GoogleFonts.righteous(color: ColorDefault.greyColor),
                             ),
                             InkWell(
@@ -206,7 +224,7 @@ class _SignUpAuthState extends State<SignUpAuth> with TextFieldsValidation {
                               borderRadius: const BorderRadius.all(Radius.circular(10)),
                               splashColor: ColorDefault.greyOtherColor.withOpacity(.3),
                               child: Text(
-                                "Sign in",
+                                "Entrar",
                                 style: GoogleFonts.righteous(color: ColorDefault.primaryColor),
                               ),
                             ),

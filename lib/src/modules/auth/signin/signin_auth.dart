@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:e_support/src/models/user/user_sign_in.dart';
 
 import '../../../utils/color_default.dart';
 import 'controllers/signin_controller.dart';
@@ -22,6 +23,7 @@ class _SignInAuthState extends State<SignInAuth> with TextFieldsValidation {
   @override
   void initState() {
     super.initState();
+    controller.showHide = false;
     controller.emailController = TextEditingController();
     controller.passwordController = TextEditingController();
   }
@@ -70,7 +72,7 @@ class _SignInAuthState extends State<SignInAuth> with TextFieldsValidation {
                       Padding(
                         padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * .03),
                         child: Text(
-                          "Sign In",
+                          "Entrar",
                           style: GoogleFonts.righteous(
                             fontSize: MediaQuery.of(context).size.height * .03,
                             color: ColorDefault.primaryColor,
@@ -82,23 +84,40 @@ class _SignInAuthState extends State<SignInAuth> with TextFieldsValidation {
                         validator: emailValidator,
                         controller: controller.emailController,
                         keyBoardType: TextInputType.emailAddress,
-                        obscureText: false,
                         title: "Email", 
                         suffixIcon: Icon(Icons.email, color: ColorDefault.greyColor),
                       ),
                       SizedBox(height: MediaQuery.of(context).size.height * .015),
                       TextFieldWidget(
+                        showHide: controller.showHide,
                         validator: passwordValidator,
                         controller: controller.passwordController,
                         keyBoardType: TextInputType.name,
-                        obscureText: true,
-                        title: "Password", 
-                        suffixIcon: Icon(Icons.key, color: ColorDefault.greyColor),
+                        title: "Senha", 
+                        suffixIcon: controller.showHide ? 
+                          GestureDetector(
+                            onTap: () => setState(() {
+                              controller.showHide = !(controller.showHide);
+                            }),
+                            child: Icon(Icons.visibility, color: ColorDefault.greyColor),
+                          ) : 
+                          GestureDetector(
+                            onTap: () => setState(() {
+                              controller.showHide = !(controller.showHide);
+                            }),
+                            child: Icon(Icons.visibility_off, color: ColorDefault.greyColor),
+                          ),
                       ),
                       SizedBox(height: MediaQuery.of(context).size.height * .06),
                       ButtonComponent(
                         onPressed: () {
-                          if (formKey.currentState!.validate()) return context.go("/loading_module");
+                          if (formKey.currentState!.validate()) {
+                            UserSignIn userSignIn = UserSignIn(
+                              email: controller.emailController.text, 
+                              password: controller.emailController.text,
+                            );
+                            return context.go("/loading_module", extra: userSignIn);
+                          }
                         },
                         border: false,
                         text: "Login",
@@ -112,7 +131,7 @@ class _SignInAuthState extends State<SignInAuth> with TextFieldsValidation {
                         padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * .004),
                         child: Center(
                           child: Text(
-                            "──────────── or ────────────",
+                            "──────────── ou ────────────",
                             style: GoogleFonts.righteous(color: ColorDefault.greyColor),
                           ),
                         ),
@@ -121,7 +140,7 @@ class _SignInAuthState extends State<SignInAuth> with TextFieldsValidation {
                         onPressed: () => context.go("/auth_module/signin"),
                         border: true,
                         icon: true,
-                        text: "Sign in with Google",
+                        text: "Entrar com o Google",
                         colorText: ColorDefault.primaryColor,
                         colorButton: ColorDefault.whiteColor,
                         colorBorder: ColorDefault.primaryColor,
@@ -134,7 +153,7 @@ class _SignInAuthState extends State<SignInAuth> with TextFieldsValidation {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Don't have an account? ",
+                              "Não tem uma conta? ",
                               style: GoogleFonts.righteous(color: ColorDefault.greyColor),
                             ),
                             InkWell(
@@ -142,7 +161,7 @@ class _SignInAuthState extends State<SignInAuth> with TextFieldsValidation {
                               borderRadius: const BorderRadius.all(Radius.circular(10)),
                               splashColor: ColorDefault.greyOtherColor.withOpacity(.3),
                               child: Text(
-                                "Sign Up",
+                                "Registrar",
                                 style: GoogleFonts.righteous(color: ColorDefault.primaryColor),
                               ),
                             ),

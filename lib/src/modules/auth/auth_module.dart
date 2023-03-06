@@ -44,7 +44,7 @@ class _AuthModuleState extends State<AuthModule> {
                 ButtonComponent(
                   onPressed: () => context.go("/auth_module/signup"),
                   border: false,
-                  text: "Sign Up",
+                  text: "Registrar",
                   colorText: ColorDefault.whiteColor,
                   colorButton: ColorDefault.primaryColor,
                   colorBorder: ColorDefault.whiteColor, 
@@ -55,7 +55,7 @@ class _AuthModuleState extends State<AuthModule> {
                 ButtonComponent(
                   onPressed: () => context.go("/auth_module/signin"),
                   border: true,
-                  text: "Sign In",
+                  text: "Entrar",
                   colorText: ColorDefault.primaryColor,
                   colorButton: ColorDefault.whiteColor,
                   colorBorder: ColorDefault.primaryColor,

@@ -10,7 +10,7 @@ class TextDescriptionComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: Text(
-        "Receive technical support, fast and simple",
+        "Receba um suporte técnico, rápido e super fácil",
         textAlign: TextAlign.center,
         style: GoogleFonts.righteous(
           fontSize: MediaQuery.of(context).size.height * .032,

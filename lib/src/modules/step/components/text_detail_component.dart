@@ -11,7 +11,7 @@ class TextDetailComponent extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * .02),
       child: Text(
-        "e-Support is a technological solution that helps or supports the other technical problems",
+        "e-Support é uma solução tecnológica que auxilia ou ajuda você nos seus problemas técnicos",
         textAlign: TextAlign.center,
         style: GoogleFonts.righteous(
           fontSize: MediaQuery.of(context).size.height * .023,

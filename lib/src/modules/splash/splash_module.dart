@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../utils/color_default.dart';
 import '../../utils/widgets/image_logo_app.dart';
+import '../../services/user/auth_check/auth_check_service_imp.dart';
 
 class SplashModule extends StatefulWidget {
   const SplashModule({super.key});
@@ -15,7 +15,9 @@ class _SplashModuleState extends State<SplashModule> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 6), () => context.go("/step_module"));
+    Future.delayed(const Duration(seconds: 5), () async {
+      await AuthCheckServiceImp().authCheck(context: context);
+    });
   }
 
   @override

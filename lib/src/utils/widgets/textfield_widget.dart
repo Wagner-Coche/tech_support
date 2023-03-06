@@ -6,16 +6,16 @@ class TextFieldWidget extends StatelessWidget {
   const TextFieldWidget({
     super.key, 
     required this.title, 
-    required this.obscureText, 
     required this.keyBoardType, 
     required this.validator,
     required this.controller,
+    this.showHide = false,
     this.suffixIcon, 
   });
 
   final String title;
-  final Icon? suffixIcon;
-  final bool obscureText;
+  final bool showHide;
+  final Widget? suffixIcon;
   final TextInputType keyBoardType;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
@@ -41,7 +41,7 @@ class TextFieldWidget extends StatelessWidget {
         TextFormField(
           validator: validator,
           controller: controller,
-          obscureText: obscureText,
+          obscureText: showHide,
           keyboardType: keyBoardType,
           cursorColor: ColorDefault.blackColor.withOpacity(.65),
           decoration: InputDecoration(

@@ -15,7 +15,9 @@ mixin TextFieldsValidation {
 
   String? fullNameValidator(String? fullName) {
     if (fullName!.isEmpty) return "Campo obrigatório!";
-    if (fullName.split(" ").length < 2) return "Nome completo, por favor!";
+    if (fullName.split(" ").length < 2 || fullName.split(" ")[1].isEmpty) {
+      return "Nome completo, por favor!";
+    }
     return null;
   }
 
