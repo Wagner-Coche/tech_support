@@ -1,10 +1,10 @@
+import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lottie/lottie.dart';
 
+import '../../utils/color_default.dart';
 import '../../models/user/user_sign_up.dart';
 import '../../services/user/create/user_create_service_imp.dart';
-import '../../utils/color_default.dart';
 
 class LoadingRegisterModule extends StatefulWidget {
   const LoadingRegisterModule({super.key, required this.userSignUp});

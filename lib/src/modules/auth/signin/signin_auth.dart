@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:e_support/src/models/user/user_sign_in.dart';
+import 'package:e_support/src/services/user/signin_google/signin_google_service_imp.dart';
 
 import '../../../utils/color_default.dart';
 import 'controllers/signin_controller.dart';
@@ -114,8 +115,9 @@ class _SignInAuthState extends State<SignInAuth> with TextFieldsValidation {
                           if (formKey.currentState!.validate()) {
                             UserSignIn userSignIn = UserSignIn(
                               email: controller.emailController.text, 
-                              password: controller.emailController.text,
+                              password: controller.passwordController.text,
                             );
+                            print("Os dados que eu passei: ${userSignIn.email} | ${userSignIn.password}");
                             return context.go("/loading_module", extra: userSignIn);
                           }
                         },
@@ -137,7 +139,9 @@ class _SignInAuthState extends State<SignInAuth> with TextFieldsValidation {
                         ),
                       ),
                       ButtonComponent(
-                        onPressed: () => context.go("/auth_module/signin"),
+                        onPressed: () async {
+                          return context.go("/loading_sign_in_google_module");
+                        },
                         border: true,
                         icon: true,
                         text: "Entrar com o Google",

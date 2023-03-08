@@ -1,3 +1,4 @@
+import 'package:e_support/src/services/user/signin_google/signin_google_service_imp.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -24,7 +25,7 @@ class _SignUpAuthState extends State<SignUpAuth> with TextFieldsValidation {
   @override
   void initState() {
     super.initState();
-    controller.showHide = false;
+    controller.showHide = true;
     controller.fullNameController = TextEditingController();
     controller.emailController = TextEditingController();
     controller.passwordController = TextEditingController();
@@ -177,7 +178,7 @@ class _SignUpAuthState extends State<SignUpAuth> with TextFieldsValidation {
                             UserSignUp userSignUp = UserSignUp(
                               fullName: controller.fullNameController.text,
                               email: controller.emailController.text, 
-                              password: controller.emailController.text,
+                              password: controller.passwordController.text,
                             );
                             return context.go("/loading_register_module", extra: userSignUp);
                           }
@@ -200,7 +201,12 @@ class _SignUpAuthState extends State<SignUpAuth> with TextFieldsValidation {
                         ),
                       ),
                       ButtonComponent(
-                        onPressed: () {},
+                        onPressed: () async {
+                          await SignInGoogleServiceImp().loginUserWithGoogle().then((userCredential) {
+                            if (userCredential != null) return context.go("/loading_sign_in_google_module", extra: userCredential.user);
+                            return;
+                          });
+                        },
                         border: true,
                         icon: true,
                         text: "Entrar com o Google",

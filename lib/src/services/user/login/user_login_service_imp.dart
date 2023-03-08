@@ -15,7 +15,7 @@ class UserLoginServiceImp implements UserLoginService {
     required BuildContext context
   }) async {
     try {
-      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+      UserCredential userCredential = await auth.signInWithEmailAndPassword(
         email: email, 
         password: password
       );

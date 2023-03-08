@@ -1,6 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:e_support/src/modules/loading_sign_in_google/loading_sign_in_google_module.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:e_support/src/modules/auth/auth_module.dart';
 import 'package:e_support/src/modules/step/step_module.dart';
 import 'package:e_support/src/modules/home/home_module.dart';
@@ -10,6 +11,7 @@ import 'package:e_support/src/modules/auth/signin/signin_auth.dart';
 import 'package:e_support/src/modules/auth/signup/signup_auth.dart';
 import 'package:e_support/src/modules/loading_register/check_register.dart';
 import 'package:e_support/src/modules/loading_register/loading_register_module.dart';
+import 'package:e_support/src/modules/logout/loading_logout_module.dart';
 
 import '../../models/user/user_sign_in.dart';
 import '../../models/user/user_sign_up.dart';
@@ -127,6 +129,32 @@ class Routes {
           return CustomTransitionPage(
             key: state.pageKey,
             child: const CheckRegister(), 
+            transitionsBuilder: (context, animation, secondaryAnimation, child) => FadeTransition(
+              opacity: CurveTween(curve: Curves.easeInOutCirc).animate(animation),
+              child: child,
+            ),
+          );
+        }
+      ),
+      GoRoute(
+        path: "/loading_logout_module", 
+        pageBuilder: (context, state) {
+          return CustomTransitionPage(
+            key: state.pageKey,
+            child: const LoadingLogoutModule(), 
+            transitionsBuilder: (context, animation, secondaryAnimation, child) => FadeTransition(
+              opacity: CurveTween(curve: Curves.easeInOutCirc).animate(animation),
+              child: child,
+            ),
+          );
+        }
+      ),
+      GoRoute(
+        path: "/loading_sign_in_google_module", 
+        pageBuilder: (context, state) {
+          return CustomTransitionPage(
+            key: state.pageKey,
+            child: const LoadingSignInGoogleModule(), 
             transitionsBuilder: (context, animation, secondaryAnimation, child) => FadeTransition(
               opacity: CurveTween(curve: Curves.easeInOutCirc).animate(animation),
               child: child,

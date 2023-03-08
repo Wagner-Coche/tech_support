@@ -1,8 +1,8 @@
-import 'package:e_support/src/models/user/user_sign_in.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:e_support/src/utils/color_default.dart';
+import 'package:e_support/src/models/user/user_sign_in.dart';
 
 import '../../services/user/login/user_login_service_imp.dart';
 
