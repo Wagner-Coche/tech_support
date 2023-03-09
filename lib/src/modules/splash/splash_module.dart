@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../utils/color_default.dart';
+import 'package:go_router/go_router.dart';
 import '../../utils/widgets/image_logo_app.dart';
 import '../../services/user/auth_check/auth_check_service_imp.dart';
 
@@ -16,7 +17,8 @@ class _SplashModuleState extends State<SplashModule> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 5), () async {
-      await AuthCheckServiceImp().authCheck(context: context);
+      // await AuthCheckServiceImp().authCheck(context: context);
+      return context.go("/home_module");
     });
   }
 

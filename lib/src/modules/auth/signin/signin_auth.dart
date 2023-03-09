@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:e_support/src/models/user/user_sign_in.dart';
-import 'package:e_support/src/services/user/signin_google/signin_google_service_imp.dart';
 
 import '../../../utils/color_default.dart';
 import 'controllers/signin_controller.dart';
@@ -24,7 +23,7 @@ class _SignInAuthState extends State<SignInAuth> with TextFieldsValidation {
   @override
   void initState() {
     super.initState();
-    controller.showHide = false;
+    controller.showHide = true;
     controller.emailController = TextEditingController();
     controller.passwordController = TextEditingController();
   }
@@ -74,8 +73,9 @@ class _SignInAuthState extends State<SignInAuth> with TextFieldsValidation {
                         padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * .03),
                         child: Text(
                           "Entrar",
-                          style: GoogleFonts.righteous(
+                          style: TextStyle(
                             fontSize: MediaQuery.of(context).size.height * .03,
+                            fontFamily: "TiltWarp",
                             color: ColorDefault.primaryColor,
                             fontWeight: FontWeight.w500
                           ),
@@ -109,7 +109,36 @@ class _SignInAuthState extends State<SignInAuth> with TextFieldsValidation {
                             child: Icon(Icons.visibility_off, color: ColorDefault.greyColor),
                           ),
                       ),
-                      SizedBox(height: MediaQuery.of(context).size.height * .06),
+                      Padding(
+                        padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * .01),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              "Esqueceu sua senha? ",
+                              style: TextStyle(
+                                fontSize: MediaQuery.of(context).size.height * .015,
+                                fontFamily: "TiltWarp",
+                                color: ColorDefault.greyColor
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () => context.go("/auth_module/recover"),
+                              borderRadius: const BorderRadius.all(Radius.circular(10)),
+                              splashColor: ColorDefault.greyOtherColor.withOpacity(.3),
+                              child: Text(
+                                "Recuperar",
+                                style: TextStyle(
+                                  fontSize: MediaQuery.of(context).size.height * .015,
+                                  fontFamily: "TiltWarp",
+                                  color: ColorDefault.primaryColor
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: MediaQuery.of(context).size.height * .05),
                       ButtonComponent(
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
@@ -117,7 +146,6 @@ class _SignInAuthState extends State<SignInAuth> with TextFieldsValidation {
                               email: controller.emailController.text, 
                               password: controller.passwordController.text,
                             );
-                            print("Os dados que eu passei: ${userSignIn.email} | ${userSignIn.password}");
                             return context.go("/loading_module", extra: userSignIn);
                           }
                         },
@@ -134,7 +162,10 @@ class _SignInAuthState extends State<SignInAuth> with TextFieldsValidation {
                         child: Center(
                           child: Text(
                             "──────────── ou ────────────",
-                            style: GoogleFonts.righteous(color: ColorDefault.greyColor),
+                            style: TextStyle(
+                              fontFamily: "TiltWarp",
+                              color: ColorDefault.greyColor
+                            ),
                           ),
                         ),
                       ),
@@ -158,7 +189,10 @@ class _SignInAuthState extends State<SignInAuth> with TextFieldsValidation {
                           children: [
                             Text(
                               "Não tem uma conta? ",
-                              style: GoogleFonts.righteous(color: ColorDefault.greyColor),
+                              style: TextStyle(
+                                fontFamily: "TiltWarp",
+                                color: ColorDefault.greyColor
+                              ),
                             ),
                             InkWell(
                               onTap: () => context.go("/auth_module/signup"),
@@ -166,7 +200,10 @@ class _SignInAuthState extends State<SignInAuth> with TextFieldsValidation {
                               splashColor: ColorDefault.greyOtherColor.withOpacity(.3),
                               child: Text(
                                 "Registrar",
-                                style: GoogleFonts.righteous(color: ColorDefault.primaryColor),
+                                style: TextStyle(
+                                  fontFamily: "TiltWarp",
+                                  color: ColorDefault.primaryColor
+                                ),
                               ),
                             ),
                           ],

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:e_support/src/utils/color_default.dart';
 
 class TextFieldWidget extends StatelessWidget {
@@ -32,8 +31,9 @@ class TextFieldWidget extends StatelessWidget {
           ),
           child: Text(
             title,
-            style: GoogleFonts.righteous(
+            style: TextStyle(
               fontSize: MediaQuery.of(context).size.height * .018,
+              fontFamily: "TiltWarp",
               color: ColorDefault.blackColor.withOpacity(.65)
             )
           ),

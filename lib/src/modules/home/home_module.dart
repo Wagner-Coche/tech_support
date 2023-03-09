@@ -16,21 +16,21 @@ class HomeModule extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Seja bem-vindo! ${user!.email}",
+              "Seja bem-vindo",
               textAlign: TextAlign.center,
-              style: GoogleFonts.righteous(
-                fontSize: MediaQuery.of(context).size.height * .02
+              style: TextStyle(
+                fontSize: MediaQuery.of(context).size.height * .02,
+                fontFamily: "TiltWarp",
               ),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () async {
-                return context.go("/loading_logout_module");
-              }, 
+              onPressed: () => context.go("/loading_logout_module"), 
               child: Text(
                 "Sair",
-                style: GoogleFonts.righteous(
-                  fontSize: MediaQuery.of(context).size.height * .03
+                style: TextStyle(
+                  fontSize: MediaQuery.of(context).size.height * .03,
+                  fontFamily: "TiltWarp",
                 ),
               )
             )

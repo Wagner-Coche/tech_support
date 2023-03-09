@@ -76,8 +76,9 @@ class _SignUpAuthState extends State<SignUpAuth> with TextFieldsValidation {
                         padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * .03),
                         child: Text(
                           "Registrar",
-                          style: GoogleFonts.righteous(
+                          style: TextStyle(
                             fontSize: MediaQuery.of(context).size.height * .03,
+                            fontFamily: "TiltWarp",
                             color: ColorDefault.primaryColor,
                             fontWeight: FontWeight.w500
                           ),
@@ -119,7 +120,10 @@ class _SignUpAuthState extends State<SignUpAuth> with TextFieldsValidation {
                           )
                       ),
                       Container(
-                        padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * .01),
+                        padding: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.height * .01,
+                          bottom: MediaQuery.of(context).size.height * .01
+                        ),
                         child: Row(
                           children: <Widget>[
                             Checkbox(
@@ -140,29 +144,33 @@ class _SignUpAuthState extends State<SignUpAuth> with TextFieldsValidation {
                                 children: <Widget>[
                                   Text(
                                     "I agree to the ",
-                                    style: GoogleFonts.righteous(
+                                    style: TextStyle(
                                       fontSize: MediaQuery.of(context).size.height * .018,
+                                      fontFamily: "TiltWarp",
                                       color: ColorDefault.greyOtherColor
                                     ),
                                   ),
                                   Text(
                                     "Terms ",
-                                    style: GoogleFonts.righteous(
+                                    style: TextStyle(
                                       fontSize: MediaQuery.of(context).size.height * .018,
+                                      fontFamily: "TiltWarp",
                                       color: ColorDefault.primaryColor
                                     ),
                                   ),
                                   Text(
                                     "and ",
-                                    style: GoogleFonts.righteous(
+                                    style: TextStyle(
                                       fontSize: MediaQuery.of(context).size.height * .018,
+                                      fontFamily: "TiltWarp",
                                       color: ColorDefault.greyOtherColor
                                     ),
                                   ),
                                   Text(
                                     "Conditions",
-                                    style: GoogleFonts.righteous(
+                                    style: TextStyle(
                                       fontSize: MediaQuery.of(context).size.height * .018,
+                                      fontFamily: "TiltWarp",
                                       color: ColorDefault.primaryColor
                                     ),
                                   ),
@@ -196,7 +204,10 @@ class _SignUpAuthState extends State<SignUpAuth> with TextFieldsValidation {
                         child: Center(
                           child: Text(
                             "──────────── ou ────────────",
-                            style: GoogleFonts.righteous(color: ColorDefault.greyColor),
+                            style: TextStyle(
+                              fontFamily: "TiltWarp",
+                              color: ColorDefault.greyColor
+                            ),
                           ),
                         ),
                       ),
@@ -223,7 +234,10 @@ class _SignUpAuthState extends State<SignUpAuth> with TextFieldsValidation {
                           children: [
                             Text(
                               "Já tem uma conta? ",
-                              style: GoogleFonts.righteous(color: ColorDefault.greyColor),
+                              style: TextStyle(
+                                fontFamily: "TiltWarp",
+                                color: ColorDefault.greyColor
+                              ),
                             ),
                             InkWell(
                               onTap: () => context.go("/auth_module/signin"),
@@ -231,7 +245,10 @@ class _SignUpAuthState extends State<SignUpAuth> with TextFieldsValidation {
                               splashColor: ColorDefault.greyOtherColor.withOpacity(.3),
                               child: Text(
                                 "Entrar",
-                                style: GoogleFonts.righteous(color: ColorDefault.primaryColor),
+                                style: TextStyle(
+                                  fontFamily: "TiltWarp",
+                                  color: ColorDefault.primaryColor
+                                ),
                               ),
                             ),
                           ],

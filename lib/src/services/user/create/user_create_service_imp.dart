@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'user_create_service.dart';
@@ -30,8 +29,9 @@ class UserCreateServiceImp implements UserCreateService {
           content: Text(
             textAlign: TextAlign.center,
             "Password muito fraca",
-            style: GoogleFonts.righteous(
+            style: TextStyle(
               fontSize: MediaQuery.of(context).size.height * .015,
+              fontFamily: "TiltWarp",
               fontWeight: FontWeight.bold
             )
           )
@@ -44,8 +44,9 @@ class UserCreateServiceImp implements UserCreateService {
           content: Text(
             textAlign: TextAlign.center,
             "Este email já está cadastrado",
-            style: GoogleFonts.righteous(
+            style: TextStyle(
               fontSize: MediaQuery.of(context).size.height * .015,
+              fontFamily: "TiltWarp",
               fontWeight: FontWeight.bold
             )
           )

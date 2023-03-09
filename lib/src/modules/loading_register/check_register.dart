@@ -1,6 +1,6 @@
+import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lottie/lottie.dart';
 
 import '../../utils/color_default.dart';
 

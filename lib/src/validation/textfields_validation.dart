@@ -9,7 +9,7 @@ mixin TextFieldsValidation {
 
   String? passwordValidator(String? password) {
     if (password!.isEmpty) return "Campo obrigatório!";
-    if (password.length < 8) return "A password precisa ter no mínimo 8 caracteres";
+    if (password.trim().length < 8) return "A password precisa ter no mínimo 8 caracteres";
     return null;
   }
 

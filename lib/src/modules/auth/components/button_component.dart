@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
 class ButtonComponent extends StatelessWidget {
   const ButtonComponent({
     super.key, 
@@ -35,7 +33,7 @@ class ButtonComponent extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: colorButton,
           shape: RoundedRectangleBorder(
-            borderRadius: const BorderRadius.all(Radius.circular(20)),
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
             side: BorderSide(
               color: colorBorder,
               width: 2,
@@ -52,17 +50,21 @@ class ButtonComponent extends StatelessWidget {
             SizedBox(width: MediaQuery.of(context).size.width * .04),
             Text(
               text,
-              style: GoogleFonts.righteous(
+              style: TextStyle(
                 fontSize: MediaQuery.of(context).size.height * .02,
+                fontFamily: "TiltWarp",
                 color: colorText,
+                fontWeight: FontWeight.w200
               )
             ),
           ],
         ) : Text(
           text,
-          style: GoogleFonts.righteous(
+          style: TextStyle(
             fontSize: MediaQuery.of(context).size.height * .02,
+            fontFamily: "TiltWarp",
             color: colorText,
+            fontWeight: FontWeight.w200
           )
         )
       )

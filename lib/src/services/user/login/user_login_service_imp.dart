@@ -1,4 +1,3 @@
-import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'user_login_service.dart';
@@ -29,8 +28,9 @@ class UserLoginServiceImp implements UserLoginService {
           content: Text(
             textAlign: TextAlign.center,
             "Usuário não encontrado",
-            style: GoogleFonts.righteous(
+            style: TextStyle(
               fontSize: MediaQuery.of(context).size.height * .015,
+              fontFamily: "TiltWarp",
               fontWeight: FontWeight.bold
             )
           )
@@ -43,8 +43,9 @@ class UserLoginServiceImp implements UserLoginService {
           content: Text(
             textAlign: TextAlign.center,
             "Sua senha está errada",
-            style: GoogleFonts.righteous(
+            style: TextStyle(
               fontSize: MediaQuery.of(context).size.height * .015,
+              fontFamily: "TiltWarp",
               fontWeight: FontWeight.bold
             )
           )
@@ -57,15 +58,16 @@ class UserLoginServiceImp implements UserLoginService {
           content: Text(
             textAlign: TextAlign.center,
             "Verifique a ligação a internet",
-            style: GoogleFonts.righteous(
+            style: TextStyle(
               fontSize: MediaQuery.of(context).size.height * .015,
+              fontFamily: "TiltWarp",
               fontWeight: FontWeight.bold
             )
           )
         ));
       }
     } catch (e) {
-      print("Error: $e");
+      debugPrint("Error: $e");
       return null;
     }
     return null;

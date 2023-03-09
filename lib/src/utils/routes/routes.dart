@@ -1,4 +1,3 @@
-import 'package:e_support/src/modules/loading_sign_in_google/loading_sign_in_google_module.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,12 +8,16 @@ import 'package:e_support/src/modules/splash/splash_module.dart';
 import 'package:e_support/src/modules/loading/loading_module.dart';
 import 'package:e_support/src/modules/auth/signin/signin_auth.dart';
 import 'package:e_support/src/modules/auth/signup/signup_auth.dart';
+import 'package:e_support/src/modules/auth/recover/recover_auth.dart';
+import 'package:e_support/src/modules/logout/loading_logout_module.dart';
+import 'package:e_support/src/modules/auth/recover/confirm_password.dart';
 import 'package:e_support/src/modules/loading_register/check_register.dart';
 import 'package:e_support/src/modules/loading_register/loading_register_module.dart';
-import 'package:e_support/src/modules/logout/loading_logout_module.dart';
+import 'package:e_support/src/modules/loading_sign_in_google/loading_sign_in_google_module.dart';
 
 import '../../models/user/user_sign_in.dart';
 import '../../models/user/user_sign_up.dart';
+import '../../modules/auth/recover/check_email_reset_password.dart';
 
 class Routes {
   static GoRouter get routes => GoRouter(
@@ -64,6 +67,45 @@ class Routes {
           return CustomTransitionPage(
             key: state.pageKey,
             child: const SignUpAuth(), 
+            transitionsBuilder: (context, animation, secondaryAnimation, child) => FadeTransition(
+              opacity: CurveTween(curve: Curves.easeInOutCirc).animate(animation),
+              child: child,
+            ),
+          );
+        },
+      ),
+      GoRoute(
+        path: "/auth_module/recover", 
+        pageBuilder: (context, state) {
+          return CustomTransitionPage(
+            key: state.pageKey,
+            child: const RecoverAuth(), 
+            transitionsBuilder: (context, animation, secondaryAnimation, child) => FadeTransition(
+              opacity: CurveTween(curve: Curves.easeInOutCirc).animate(animation),
+              child: child,
+            ),
+          );
+        },
+      ),
+      GoRoute(
+        path: "/auth_module/checkemail", 
+        pageBuilder: (context, state) {
+          return CustomTransitionPage(
+            key: state.pageKey,
+            child: const CheckEmailResetPassword(), 
+            transitionsBuilder: (context, animation, secondaryAnimation, child) => FadeTransition(
+              opacity: CurveTween(curve: Curves.easeInOutCirc).animate(animation),
+              child: child,
+            ),
+          );
+        },
+      ),
+      GoRoute(
+        path: "/auth_module/confirmpassword", 
+        pageBuilder: (context, state) {
+          return CustomTransitionPage(
+            key: state.pageKey,
+            child: const ConfirmPassword(), 
             transitionsBuilder: (context, animation, secondaryAnimation, child) => FadeTransition(
               opacity: CurveTween(curve: Curves.easeInOutCirc).animate(animation),
               child: child,

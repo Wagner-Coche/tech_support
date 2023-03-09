@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../utils/color_default.dart';
 
@@ -32,10 +31,11 @@ class ImageLogoApp extends StatelessWidget {
             ),
             child: Text(
               "SUPPORT",
-              style: GoogleFonts.righteous(
+              style: TextStyle(
                 fontSize: fontSize,
+                fontFamily: "TiltWarp",
                 color: ColorDefault.whiteColor,
-                fontWeight: FontWeight.bold
+                fontWeight: FontWeight.w300
               )
             ),
           )
