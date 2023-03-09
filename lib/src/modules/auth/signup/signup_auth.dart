@@ -7,7 +7,7 @@ import 'package:e_support/src/utils/widgets/textfield_widget.dart';
 
 import '../../../models/user/user_sign_up.dart';
 import 'controllers/signup_controller.dart';
-import '../components/button_component.dart';
+import '../../../utils/widgets/button_widget.dart';
 import '../../../validation/textfields_validation.dart';
 
 class SignUpAuth extends StatefulWidget {
@@ -180,7 +180,7 @@ class _SignUpAuthState extends State<SignUpAuth> with TextFieldsValidation {
                           ],
                         )
                       ),
-                      ButtonComponent(
+                      ButtonWidget(
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
                             UserSignUp userSignUp = UserSignUp(
@@ -211,7 +211,7 @@ class _SignUpAuthState extends State<SignUpAuth> with TextFieldsValidation {
                           ),
                         ),
                       ),
-                      ButtonComponent(
+                      ButtonWidget(
                         onPressed: () async {
                           await SignInGoogleServiceImp().loginUserWithGoogle().then((userCredential) {
                             if (userCredential != null) return context.go("/loading_sign_in_google_module", extra: userCredential.user);

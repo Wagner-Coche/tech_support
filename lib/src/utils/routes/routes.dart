@@ -17,6 +17,8 @@ import 'package:e_support/src/modules/loading_sign_in_google/loading_sign_in_goo
 
 import '../../models/user/user_sign_in.dart';
 import '../../models/user/user_sign_up.dart';
+import '../../modules/home/profile_user.dart';
+import '../../modules/home/notifications_tickets.dart';
 import '../../modules/auth/recover/check_email_reset_password.dart';
 
 class Routes {
@@ -153,11 +155,37 @@ class Routes {
         }
       ),
       GoRoute(
-        path: "/home_module", 
+        path: "/home_module",
         pageBuilder: (context, state) {
           return CustomTransitionPage(
             key: state.pageKey,
             child: HomeModule(user: state.extra as User?), 
+            transitionsBuilder: (context, animation, secondaryAnimation, child) => FadeTransition(
+              opacity: CurveTween(curve: Curves.easeInOutCirc).animate(animation),
+              child: child,
+            ),
+          );
+        }
+      ),
+      GoRoute(
+        path: "/home_module/notifications_tickets", 
+        pageBuilder: (context, state) {
+          return CustomTransitionPage(
+            key: state.pageKey,
+            child: const NotificationsTickets(), 
+            transitionsBuilder: (context, animation, secondaryAnimation, child) => FadeTransition(
+              opacity: CurveTween(curve: Curves.easeInOutCirc).animate(animation),
+              child: child,
+            ),
+          );
+        }
+      ),
+      GoRoute(
+        path: "/home_module/profile_user", 
+        pageBuilder: (context, state) {
+          return CustomTransitionPage(
+            key: state.pageKey,
+            child: const ProfileUser(), 
             transitionsBuilder: (context, animation, secondaryAnimation, child) => FadeTransition(
               opacity: CurveTween(curve: Curves.easeInOutCirc).animate(animation),
               child: child,
@@ -206,4 +234,4 @@ class Routes {
       ),
     ], 
   );
-}
+} 

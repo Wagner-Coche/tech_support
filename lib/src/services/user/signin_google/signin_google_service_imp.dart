@@ -21,8 +21,11 @@ class SignInGoogleServiceImp implements SignInGoogleService {
       idToken: googleAuth.idToken
     );
 
-    UserCredential userCredential = await auth.signInWithCredential(googleCredential);
-    return userCredential;
+    await auth.signInWithCredential(googleCredential).then((data) async {
+      await data.user!.updateDisplayName(_user!.displayName);
+      return data;
+    });
+    return null;
   }
   
 }

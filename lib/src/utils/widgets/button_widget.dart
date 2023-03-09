@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-class ButtonComponent extends StatelessWidget {
-  const ButtonComponent({
+class ButtonWidget extends StatelessWidget {
+  const ButtonWidget({
     super.key, 
     required this.border, 
     required this.text, 

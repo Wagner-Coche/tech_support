@@ -17,8 +17,7 @@ class _SplashModuleState extends State<SplashModule> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 5), () async {
-      // await AuthCheckServiceImp().authCheck(context: context);
-      return context.go("/home_module");
+      await AuthCheckServiceImp().authCheck(context: context);
     });
   }
 

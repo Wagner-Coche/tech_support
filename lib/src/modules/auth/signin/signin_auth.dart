@@ -5,7 +5,7 @@ import 'package:e_support/src/models/user/user_sign_in.dart';
 
 import '../../../utils/color_default.dart';
 import 'controllers/signin_controller.dart';
-import '../components/button_component.dart';
+import '../../../utils/widgets/button_widget.dart';
 import '../../../utils/widgets/textfield_widget.dart';
 import '../../../validation/textfields_validation.dart';
 
@@ -139,7 +139,7 @@ class _SignInAuthState extends State<SignInAuth> with TextFieldsValidation {
                         ),
                       ),
                       SizedBox(height: MediaQuery.of(context).size.height * .05),
-                      ButtonComponent(
+                      ButtonWidget(
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
                             UserSignIn userSignIn = UserSignIn(
@@ -169,7 +169,7 @@ class _SignInAuthState extends State<SignInAuth> with TextFieldsValidation {
                           ),
                         ),
                       ),
-                      ButtonComponent(
+                      ButtonWidget(
                         onPressed: () async {
                           return context.go("/loading_sign_in_google_module");
                         },

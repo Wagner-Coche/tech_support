@@ -25,15 +25,4 @@ mixin TextFieldsValidation {
     if (field!.isEmpty) return "O campo obrigatório!";
     return null;
   }
-
-  String? phoneNumberValidator(String? number) {
-    if (number!.isEmpty) return "Campo obrigatório!";
-    if (number.length != 9) return "Número inválido";
-    return null;
-  }
-
-  String? singleChar(String? char) {
-    if (char!.isEmpty) return "";
-    return null;
-  }
 }

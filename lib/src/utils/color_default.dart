@@ -7,5 +7,6 @@ class ColorDefault {
   static Color get greyOtherColor => const Color(0xffc1c1c1);
   static Color get greyLightColor => const Color(0xfff1f1fe);
   static Color get blackColor => const Color(0xff000000);
+  static Color get blueColor => Colors.blue;
   static Color get redColor => const Color.fromARGB(255, 189, 7, 7);
 }
