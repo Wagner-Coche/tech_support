@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 abstract class UserDeleteService {
-  Future<bool?>? call({required int pk});
+  Future<bool> deleteUser({required BuildContext context});
 }

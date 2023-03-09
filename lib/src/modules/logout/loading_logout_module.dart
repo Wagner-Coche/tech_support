@@ -16,7 +16,7 @@ class _LoadingLogoutModuleState extends State<LoadingLogoutModule> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 4), () async {
-      await SignOutServiceImp().signOut().then((result) {
+      await SignOutServiceImp().signOut(context: context).then((result) {
         if (result) return context.go("/auth_module/signin");
         return context.go("/home_module");
       });

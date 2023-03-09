@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../utils/color_default.dart';
-import 'package:go_router/go_router.dart';
 import '../../utils/widgets/image_logo_app.dart';
 import '../../services/user/auth_check/auth_check_service_imp.dart';
 

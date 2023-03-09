@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../services/user/delete/user_delete_service_imp.dart';
 import '../../utils/color_default.dart';
 import '../../utils/widgets/button_widget.dart';
 import '../../utils/widgets/listtile_widget.dart';
@@ -167,15 +168,30 @@ class _ProfileUserState extends State<ProfileUser> {
               left: MediaQuery.of(context).size.width * .05,
               bottom: MediaQuery.of(context).size.height * .02,
             ),
-            child: ButtonWidget(
-              onPressed: () => context.go("/loading_logout_module"),
-              border: false,
-              text: "Sair",
-              colorText: ColorDefault.whiteColor,
-              colorButton: ColorDefault.primaryColor,
-              colorBorder: ColorDefault.primaryColor,
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * .08,
+            child: Column(
+              children: [
+                ButtonWidget(
+                  onPressed: () => context.go("/loading_logout_module"),
+                  border: false,
+                  text: "Sair",
+                  colorText: ColorDefault.whiteColor,
+                  colorButton: ColorDefault.primaryColor,
+                  colorBorder: ColorDefault.primaryColor,
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height * .08,
+                ),
+                SizedBox(height: MediaQuery.of(context).size.height * .02),
+                ButtonWidget(
+                  onPressed: () => UserDeleteServiceImp().deleteUser(context: context),
+                  border: false,
+                  text: "Apagar conta",
+                  colorText: ColorDefault.whiteColor,
+                  colorButton: ColorDefault.redColor,
+                  colorBorder: ColorDefault.redColor,
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height * .08,
+                ),
+              ],
             ),
           ),    
         ],
