@@ -60,7 +60,7 @@ class HomeModule extends StatelessWidget {
                                   child: CircleAvatar(
                                     backgroundColor: ColorDefault.whiteColor,
                                     backgroundImage: const AssetImage(
-                                      "assets/images/wagner.jpeg"
+                                      "assets/images/Telma.jpg"
                                     ),
                                     radius: 2,
                                   ),

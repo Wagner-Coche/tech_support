@@ -27,9 +27,8 @@ class _LoadingRegisterModuleState extends State<LoadingRegisterModule> {
         context: context,
       ).then((userCredential) {
           if (userCredential != null) return context.go("/check_register");
-          return context.go("/auth_module/signup"); // if (userCredential.user != null) return context.go("/loading_register_module");
+          return context.go("/auth_module/signup"); 
       });
-      // context.go("/check_register")
     });
   }
 
