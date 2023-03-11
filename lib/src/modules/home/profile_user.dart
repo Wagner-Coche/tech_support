@@ -94,7 +94,7 @@ class _ProfileUserState extends State<ProfileUser> {
                           child: CircleAvatar(
                             backgroundColor: ColorDefault.whiteColor,
                             backgroundImage: const AssetImage(
-                              "assets/images/wagner.jpeg"
+                              "assets/images/Telma.jpg"
                             ),
                             radius: 2,
                           ),
@@ -105,7 +105,7 @@ class _ProfileUserState extends State<ProfileUser> {
                     Column(
                       children: <Widget>[
                         Text(
-                          "Wagner Coche",
+                          "Telma Damião",
                           style: TextStyle(
                             fontSize: MediaQuery.of(context).size.height * .03,
                             fontFamily: "TiltWarp",
@@ -114,7 +114,7 @@ class _ProfileUserState extends State<ProfileUser> {
                         ),
                         SizedBox(height: MediaQuery.of(context).size.height * .004),
                         Text(
-                          "wagnercoche@gmail.com",
+                          "telmadamiao015@gmail.com",
                           style: TextStyle(
                             fontSize: MediaQuery.of(context).size.height * .015,
                             fontFamily: "TiltWarp",

@@ -15,13 +15,12 @@ class UserCreateServiceImp implements UserCreateService {
     required BuildContext context
   }) async {
     try {
-      await auth.createUserWithEmailAndPassword(
+      UserCredential userCredential = await auth.createUserWithEmailAndPassword(
         email: email, 
         password: password
-      ).then((data) async {
-        await data.user!.updateDisplayName(fullName);
-        return data;
-      });
+      );
+      await userCredential.user?.updateDisplayName(fullName);
+      return userCredential;
     } on FirebaseAuthException catch (e) {
       if (e.code == "weak-password") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -55,7 +54,7 @@ class UserCreateServiceImp implements UserCreateService {
         ));
       } 
     } catch (e) {
-      print("Error: $e");
+      debugPrint("Error: $e");
       return null;
     }
     return null;
