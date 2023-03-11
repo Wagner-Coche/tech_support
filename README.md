@@ -1,16 +1,36 @@
-# e_support
+# e-Support👨🏽‍💻
 
-A new Flutter project.
+## Receba suportes técnicos pela e-Support
 
-## Getting Started
+## Passos:
+  - Após o clone do repositório
+  - Actualize as dependências rodando: flutter pub get
+  - Gere um apk: flutter build apk | Rode o projecto: flutter run
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Telas
+  ### Splash Screen
+  ![Ilustração](assets/splash.jpg)
+  
+  ### Auth Screen
+  ![Ilustração](assets/auth screen.jpg)
+  
+  ### Register Screen
+  ![Ilustração](assets/register screen.jpg)
+  
+  ### Login Screen
+  ![Ilustração](assets/login screen.jpg)
+ 
+  ### Recover Password Screen
+  ![Ilustração](assets/reset password.jpg)
+  
+  ### Verify Email Screen
+  ![Ilustração](assets/verify email.jpg)
+  
+  ### Loading Screen
+  ![Ilustração](assets/loading screen.jpg)
+  
+  ### Notifications Screen
+  ![Ilustração](assets/notifications screen.jpg)
+ 
+  ### Profile Screen
+  ![Ilustração](assets/profile screen.jpg)
